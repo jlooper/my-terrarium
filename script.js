@@ -14,39 +14,44 @@ dragElement(document.getElementById('plant13'));
 dragElement(document.getElementById('rock1'));
 dragElement(document.getElementById('rock2'));
 
-function dragElement(elmnt) {
+/*"A closure is the combination of a function bundled together (enclosed) 
+with references to its surrounding state (the lexical environment). 
+In other words, a closure gives you access to an outer function’s scope 
+from an inner function." Create a closure so that you can track the dragged element*/
+
+function dragElement(terrariumElement) {
+	//set 4 positions for positioning on the screen
 	var pos1 = 0,
 		pos2 = 0,
 		pos3 = 0,
 		pos4 = 0;
-	elmnt.onpointerdown = dragMouseDown;
 
-	function dragMouseDown(e) {
-		e = e || window.event;
+	//1. when you touch the terrariumElement, start tracking the pointer
+
+	function pointerDrag(e) {
 		e.preventDefault();
-		// get the mouse cursor position at startup:
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		document.onpointerup = closeDragElement;
-		// call a function whenever the cursor moves:
-		document.onpointermove = elementDrag;
+		console.log(e);
+		//2. set pos3 to be e's clientX
+		//3. set pos4 to be e's clientY
+		//4. when the mouse moves, start the drag
+		//5. when the mouse is lifted, stop the drag
 	}
 
 	function elementDrag(e) {
-		// calculate the new cursor position:
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
+		// calculate the new cursor position
+		//5. set pos1 = where the Xmouse WAS - where it IS
+		//6. set pos2 = where the Ymouse WAS - where it IS
+		//7. reset pos3 to current location of Xmouse
+		//8. reset pos4 to current location of Ymouse
 		//console.log(pos1, pos2, pos3, pos4);
 		// set the element's new position:
-		elmnt.style.top = elmnt.offsetTop - pos2 + 'px';
-		elmnt.style.left = elmnt.offsetLeft - pos1 + 'px';
+		terrariumElement.style.top = terrariumElement.offsetTop - pos2 + 'px';
+		terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + 'px';
 	}
 
 	function closeDragElement() {
-		// stop moving when mouse is released:
-		document.onpointerup = null;
-		document.onpointermove = null;
+		// stop calculating when mouse is released
+		//9. reset the raised pointer to null
+		//10. reset the moved pointer to null
 	}
 }
