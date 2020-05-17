@@ -14,38 +14,49 @@ dragElement(document.getElementById('plant13'));
 dragElement(document.getElementById('rock1'));
 dragElement(document.getElementById('rock2'));
 
-function dragElement(elmnt) {
+/*"A closure is the combination of a function bundled together (enclosed) 
+with references to its surrounding state (the lexical environment). 
+In other words, a closure gives you access to an outer function’s scope 
+from an inner function." Create a closure so that you can track the dragged element*/
+
+function dragElement(terrariumElement) {
+	//set 4 positions for positioning on the screen
 	var pos1 = 0,
 		pos2 = 0,
 		pos3 = 0,
 		pos4 = 0;
-	elmnt.onpointerdown = dragMouseDown;
+	terrariumElement.onpointerdown = pointerDrag;
 
-	function dragMouseDown(e) {
-		e = e || window.event;
+	function pointerDrag(e) {
 		e.preventDefault();
-		// get the mouse cursor position at startup:
+		console.log(e);
+		// get the initial mouse cursor position for pos3 and pos4
 		pos3 = e.clientX;
 		pos4 = e.clientY;
-		document.onpointerup = closeDragElement;
-		// call a function whenever the cursor moves:
+		// when the mouse moves, start the drag
 		document.onpointermove = elementDrag;
+		// when the mouse is lifted, stop the drag
+		document.onpointerup = closeDragElement;
 	}
 
 	function elementDrag(e) {
-		// calculate the new cursor position:
+		// calculate the new cursor position
+		// pos1 = where the Xmouse WAS - where it IS
 		pos1 = pos3 - e.clientX;
+		// pos2 = where the Ymouse WAS - where it IS
 		pos2 = pos4 - e.clientY;
+		//reset pos3 to current location of Xmouse
 		pos3 = e.clientX;
+		//reset pos4 to current location of Ymouse
 		pos4 = e.clientY;
 		//console.log(pos1, pos2, pos3, pos4);
 		// set the element's new position:
-		elmnt.style.top = elmnt.offsetTop - pos2 + 'px';
-		elmnt.style.left = elmnt.offsetLeft - pos1 + 'px';
+		terrariumElement.style.top = terrariumElement.offsetTop - pos2 + 'px';
+		terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + 'px';
 	}
 
 	function closeDragElement() {
-		// stop moving when mouse is released:
+		// stop calculating when mouse is released
 		document.onpointerup = null;
 		document.onpointermove = null;
 	}
