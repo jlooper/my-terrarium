@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-	color: #0f7959;
+	color: #3a241d;
 	text-align: center;
 }
 
@@ -35,8 +35,7 @@ h1 {
 
 .plant {
 	position: absolute;
-	max-width: 100%;
-	max-height: 100%;
+	max-height: 150%;
 	z-index: 4;
 }
 
@@ -50,7 +49,7 @@ h1 {
 .jar-walls {
 	height: 80%;
 	width: 60%;
-	background: #a1e0da;
+	background: #d1e1df;
 	border-radius: 3rem;
 	position: absolute;
 	bottom: 0.5%;
@@ -62,7 +61,7 @@ h1 {
 .jar-top {
 	width: 50%;
 	height: 5%;
-	background: #a1e0da;
+	background: #d1e1df;
 	position: absolute;
 	bottom: 80.5%;
 	left: 25%;
@@ -73,7 +72,7 @@ h1 {
 .jar-bottom {
 	width: 50%;
 	height: 1%;
-	background: #a1e0da;
+	background: #d1e1df;
 	position: absolute;
 	bottom: 0%;
 	left: 25%;
@@ -81,7 +80,7 @@ h1 {
 }
 
 .dirt {
-	/*task: add some dirt!*/
+	/*add dirt here!*/
 }
 
 .jar-glossy-long {
