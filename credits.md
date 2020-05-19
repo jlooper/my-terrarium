@@ -2,7 +2,7 @@
 
 The terrarium created via CSS was inspired by Jakub Mandra's glass jar [codepen](https://codepen.io/Rotarepmi/pen/rjpNZY).
 
-The artwork was inspired by the Florarium by Iriskana on [VectorStock](https://www.vectorstock.com/royalty-free-vector/glass-terrariums-with-beautiful-succulents-vector-15196471).
+The artwork was hand drawn by [Jen Looper](http://jenlooper.com) using Procreate.
 
 The solution to draggable elements was inspired by w3schools solution on creating a [Draggable HTML Element](https://www.w3schools.com/howto/howto_js_draggable.asp).
 
