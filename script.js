@@ -1,3 +1,5 @@
+/*The solution to draggable elements was inspired by w3schools solution on creating a [Draggable HTML Element](https://www.w3schools.com/howto/howto_js_draggable.asp).*/
+
 dragElement(document.getElementById('plant1'));
 dragElement(document.getElementById('plant2'));
 dragElement(document.getElementById('plant3'));
@@ -20,7 +22,7 @@ from an inner function." Create a closure so that you can track the dragged elem
 
 function dragElement(terrariumElement) {
 	//set 4 positions for positioning on the screen
-	var pos1 = 0,
+	let pos1 = 0,
 		pos2 = 0,
 		pos3 = 0,
 		pos4 = 0;
@@ -35,7 +37,7 @@ function dragElement(terrariumElement) {
 		// when the mouse moves, start the drag
 		document.onpointermove = elementDrag;
 		// when the mouse is lifted, stop the drag
-		document.onpointerup = closeDragElement;
+		document.onpointerup = stopElementDrag;
 	}
 
 	function elementDrag(e) {
@@ -48,13 +50,13 @@ function dragElement(terrariumElement) {
 		pos3 = e.clientX;
 		//reset pos4 to current location of Ymouse
 		pos4 = e.clientY;
-		//console.log(pos1, pos2, pos3, pos4);
+		console.log(pos1, pos2, pos3, pos4);
 		// set the element's new position:
 		terrariumElement.style.top = terrariumElement.offsetTop - pos2 + 'px';
 		terrariumElement.style.left = terrariumElement.offsetLeft - pos1 + 'px';
 	}
 
-	function closeDragElement() {
+	function stopElementDrag() {
 		// stop calculating when mouse is released
 		document.onpointerup = null;
 		document.onpointermove = null;
